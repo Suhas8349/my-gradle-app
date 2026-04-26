@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK8'
-    }
-
     stages {
 
         stage('Checkout') {
@@ -35,12 +31,7 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Build and deployment successful'
-        }
-
-        failure {
-            echo 'Build failed!'
-        }
+        success { echo 'Build successful' }
+        failure { echo 'Build failed!' }
     }
 }
