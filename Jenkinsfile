@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'JDK8'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -12,19 +16,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'gradle build'
+                sh 'chmod +x gradlew'
+                sh './gradlew build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
 
         stage('Run Application') {
             steps {
-                sh 'gradle run'
+                sh './gradlew run'
             }
         }
     }
