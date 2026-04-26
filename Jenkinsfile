@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 git branch: 'master',
@@ -12,26 +11,27 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'chmod +x gradlew'
-                sh './gradlew build'
+                dir('devops-gradle') {
+                    sh 'chmod +x gradlew'
+                    sh './gradlew build'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh './gradlew test'
+                dir('devops-gradle') {
+                    sh './gradlew test'
+                }
             }
         }
 
         stage('Run Application') {
             steps {
-                sh './gradlew run'
+                dir('devops-gradle') {
+                    sh './gradlew run'
+                }
             }
         }
-    }
-
-    post {
-        success { echo 'Build successful' }
-        failure { echo 'Build failed!' }
     }
 }
