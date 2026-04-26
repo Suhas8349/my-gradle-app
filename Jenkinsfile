@@ -11,26 +11,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('devops-gradle') {
-                    sh 'chmod +x gradlew'
-                    sh './gradlew build'
-                }
+                sh 'chmod +x gradlew'
+                sh './gradlew build'
             }
         }
 
         stage('Test') {
             steps {
-                dir('devops-gradle') {
-                    sh './gradlew test'
-                }
+                sh './gradlew test'
             }
         }
 
         stage('Run Application') {
             steps {
-                dir('devops-gradle') {
-                    sh './gradlew run'
-                }
+                sh './gradlew run'
             }
         }
     }
