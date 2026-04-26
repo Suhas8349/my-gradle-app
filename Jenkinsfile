@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean') {
+            steps {
+                deleteDir()
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git branch: 'master',
@@ -12,6 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'chmod +x gradlew'
+                sh './gradlew --version'
                 sh './gradlew build'
             }
         }
