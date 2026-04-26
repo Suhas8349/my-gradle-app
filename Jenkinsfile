@@ -1,16 +1,11 @@
 pipeline {
     agent any
 
-    tools {
-        gradle 'Gradle'
-        jdk 'JDK8'
-    }
-
     stages {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
+                git branch: 'master',
                     url: 'https://github.com/Suhas8349/my-gradle-app.git'
             }
         }
@@ -36,11 +31,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build and deployment successful'
+            echo 'Build successful'
         }
-
         failure {
-            echo 'Build failed!'
+            echo 'Build failed'
         }
     }
 }
