@@ -2,22 +2,22 @@ pipeline {
     agent any
 
     tools {
-        gradle 'Gradle'// must match Jenkins config name
-        jdk 'JDK8'           // must match Jenkins config name
+        gradle 'Gradle'
+        jdk 'JDK8'
     }
 
     stages {
 
-       stage('Checkout') {
+        stage('Checkout') {
             steps {
-                git branch:'main',
-                url:'https://github.com/Suhas8349/my-gradle-app.git'
+                git branch: 'master',
+                    url: 'https://github.com/Suhas8349/my-gradle-app.git'
             }
+        }
+
         stage('Build') {
             steps {
-              sh 'gradle build'
-              
-              
+                sh 'gradle build'
             }
         }
 
@@ -35,9 +35,10 @@ pipeline {
     }
 
     post {
-        success{
-        	echo 'Build and deployment successful'
+        success {
+            echo 'Build and deployment successful'
         }
+
         failure {
             echo 'Build failed!'
         }
