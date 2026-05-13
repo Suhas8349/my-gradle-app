@@ -1,17 +1,29 @@
-plugins {
-    id 'java'
-    id 'application'
+// plugins {
+//     id 'java'
+//     id 'application'
+// }
+
+// repositories {
+//     mavenCentral()
+// }
+
+// dependencies {
+//     implementation 'org.seleniumhq.selenium:selenium-java:4.29.0'
+//     testImplementation 'junit:junit:4.13.2'
+// }
+
+// application {
+//     mainClass = 'App'
+// }
+apply plugin: 'java'
+
+apply plugin: 'application'
+
+repositories{
+    jcenter()
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:4.29.0'
-    testImplementation 'junit:junit:4.13.2'
-}
-
-application {
-    mainClass = 'App'
+dependencies{
+    compile 'com.google.guava:guava:23.0'
+    testcompile 'junit:junit:4.12'
 }
