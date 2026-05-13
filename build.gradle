@@ -15,19 +15,26 @@
 // application {
 //     mainClass = 'App'
 // }
-apply plugin: 'java'
-
-apply plugin: 'application'
-
-repositories{
-    jcenter()
+plugins {
+    id 'java'
+    id 'application'
 }
 
-dependencies{
-    compile 'com.google.guava:guava:23.0'
-    testcompile 'junit:junit:4.13.2'
+repositories {
+    mavenCentral()
 }
 
-application{
-    mainClass='App'
+dependencies {
+    implementation 'com.google.guava:guava:23.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+application {
+    mainClass = 'App'
+}
+
+tasks.register('display') {
+    doLast {
+        println 'Hello from Gradle display task!'
+    }
 }
